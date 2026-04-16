@@ -25,23 +25,18 @@
             display: flex; 
             flex-direction: column;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* TVOJE POZADÍ S OBRÁZKEM */
-        body::before {
-            content: "";
+        /* --- STYLY PRO VIDEO POZADÍ --- */
+        #video-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('czskroleplay.mp4');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            filter: brightness(0.2) blur(8px); 
+            object-fit: cover;
             z-index: -1;
+            filter: brightness(0.25) blur(5px); /* Ztmavení a rozmazání jako u obrázku */
         }
 
         nav {
@@ -79,41 +74,15 @@
             text-align: center;
         }
 
-        .banner-container {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 30px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .banner-image { width: 100%; height: auto; display: block; }
-
-        h2 { font-size: 2.2rem; margin-bottom: 15px; color: var(--primary); font-weight: 800; text-transform: uppercase;}
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
-        .card span { font-size: 0.75rem; color: var(--text-dim); display: block; margin-bottom: 5px; text-transform: uppercase; }
-
-        /* Styly pro Staff Tým */
-        .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 10px; }
-        .staff-item { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 18px; border-radius: 12px; text-align: center; transition: 0.3s; }
-        .staff-item:hover { background: rgba(59, 130, 246, 0.08); border-color: var(--primary); transform: translateY(-3px); }
-        .owner { border-top: 3px solid #ef4444 !important; }
-        .admin-high { border-top: 3px solid #f59e0b !important; }
-        .admin { border-top: 3px solid #3b82f6 !important; }
-        .empty { opacity: 0.6; border-style: dashed; }
-        .staff-item span { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--primary); font-weight: 800; margin-bottom: 8px; }
-        .staff-item b { font-size: 0.95rem; color: #fff; }
-        .staff-item small { color: var(--text-dim); font-size: 0.75rem; display: block; margin-top: 4px; font-weight: 400; }
-
-        @media (max-width: 768px) {
-            .nav-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
-            h2 { font-size: 1.6rem; }
-        }
+        /* ... zbytek tvého CSS (staff-grid atd.) ... */
     </style>
 </head>
 <body>
+
+    <video autoplay muted loop playsinline id="video-bg">
+        <source src="czskroleplay.mp4" type="video/mp4">
+        Váš prohlížeč nepodporuje video tag.
+    </video>
 
     <nav>
         <div class="logo">CZ/SK ROLEPLAY</div>
