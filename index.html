@@ -5,24 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CZ/SK Roleplay | Oficiální Web</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-
-        :root {
+   :root {
             --primary: #3b82f6;
             --accent: #60a5fa;
             --bg: #050810;
             --card-bg: rgba(15, 23, 42, 0.95);
             --text: #f8fafc;
             --text-dim: #94a3b8;
-
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
         
-
         body { 
-
             background: var(--bg); 
             color: var(--text); 
             min-height: 100vh;
@@ -30,10 +24,8 @@
             flex-direction: column;
             overflow-x: hidden;
             background-image: radial-gradient(circle at top right, #1e3a8a, transparent), radial-gradient(circle at bottom left, #1e1b4b, transparent);
-
+            background-attachment: fixed; /* Toto zajistí, že pozadí bude na všech stránkách stejné */
         }
-
-
 
         nav {
             background: rgba(0, 0, 0, 0.85);
@@ -46,7 +38,6 @@
             z-index: 1000;
             position: sticky;
             top: 0;
-
         }
     /* Přidal jsem mírné rozmazání pod karty pro moderní vzhled */
     .content-card {
