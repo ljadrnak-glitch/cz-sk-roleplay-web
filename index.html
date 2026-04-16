@@ -184,13 +184,14 @@
         </div>
     </div>
 </div>
-</style>
+<style>
+    /* OPRAVENÉ STYLY PRO INFO-GRID */
     .info-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 12px;
         margin-top: 30px;
-        text-align: left; /* Změna z centrovaného na levo */
+        text-align: left;
     }
 
     .info-item {
@@ -199,7 +200,7 @@
         padding: 15px 20px;
         border-radius: 12px;
         display: flex;
-        justify-content: space-between; /* Popisek vlevo, hodnota vpravo */
+        justify-content: space-between;
         align-items: center;
         transition: 0.3s;
     }
@@ -223,10 +224,9 @@
         font-weight: 700;
     }
 
-    /* Barevné zvýraznění pro různé typy informací */
     .accent-grid { border-left: 3px solid var(--primary); }
-    .owner-grid { border-left: 3px solid #f59e0b; } /* Oranžová pro majitele */
-    .founder-grid { border-left: 3px solid var(--text-dim); opacity: 0.7; } /* Zašedlá pro historii */
+    .owner-grid { border-left: 3px solid #f59e0b; }
+    .founder-grid { border-left: 3px solid var(--text-dim); opacity: 0.7; }
 
     .motto-panel {
         margin-top: 40px;
@@ -239,6 +239,7 @@
         font-size: 0.9rem;
         text-transform: uppercase;
         letter-spacing: 1px;
+        text-align: center; /* Aby byl text v panelu uprostřed */
     }
 
     @media (max-width: 600px) {
