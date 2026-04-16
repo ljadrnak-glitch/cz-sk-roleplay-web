@@ -99,6 +99,69 @@
     </style>
 </head>
 <body>
+
+    <nav>
+        <div class="logo">CZ/SK ROLEPLAY</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('uvod')" id="l-uvod" class="active">Úvod</a></li>
+            <li><a onclick="showPage('info')" id="l-info">Informace</a></li>
+            <li><a onclick="showPage('staff')" id="l-staff">Admin list</a></li>
+            <li><a onclick="showPage('rules')" id="l-rules">RP pravidla</a></li>
+            <li><a onclick="showPage('nabor')" id="l-nabor">Nábor</a></li>
+            <li><a onclick="showPage('wl')" id="l-wl">WI-ON</a></li>
+            <li><a onclick="showPage('akce')" id="l-akce">Akce</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        
+        <div id="uvod" class="page active">
+            <div class="content-card">
+                
+                <div class="banner-container">
+                    <img src="czskroleplay.webp" alt="CZ/SK Roleplay Banner" class="banner-image">
+                </div>
+
+                <h2>VŠE O NAŠEM SERVERU A ROLEPLAY PRAVIDEL</h2>
+                <p style="margin-bottom: 20px; color: var(--text-dim); font-style: italic;">Made by: Vedení Projektu Cz/Sk Roleplay</p>
+                
+                <div class="grid">
+                    <div class="card" style="border-left: 4px solid #5865F2;">
+                        <span>Oficiální Komunita</span>
+                        <b>Discord: discord.gg/czskrp</b>
+                    </div>
+                    <div class="card" style="border-left: 4px solid #3b82f6;">
+                        <span>Připojení do hry</span>
+                        <b>In-game: <code style="background:#1e3a8a; padding: 2px 5px; border-radius: 4px;">fjnnwbe0</code></b>
+                    </div>
+                    <div class="card" style="border-left: 4px solid #ff0050;">
+                        <span>Sleduj nás</span>
+                        <b>Tiktok: @czsk.eh</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="info" class="page"><div class="content-card"><h2>Informace</h2></div></div>
+        <div id="staff" class="page"><div class="content-card"><h2>Admin List</h2></div></div>
+        <div id="rules" class="page"><div class="content-card"><h2>RP Pravidla</h2></div></div>
+        <div id="nabor" class="page"><div class="content-card"><h2>Nábor</h2></div></div>
+        <div id="wl" class="page"><div class="content-card"><h2>WI-ON</h2></div></div>
+        <div id="akce" class="page"><div class="content-card"><h2>Akce</h2></div></div>
+
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('l-' + pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
     <nav>
         <div class="logo">CZ/SK ROLEPLAY</div>
         <ul class="nav-links">
