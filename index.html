@@ -6,7 +6,7 @@
     <title>CZ/SK Roleplay | Oficiální Web</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
-    <style> /* TATO ZNAČKA TI TAM CHYBĚLA */
+    <style>
         :root {
             --primary: #3b82f6;
             --accent: #60a5fa;
@@ -42,22 +42,10 @@
             top: 0;
         }
 
-        .content-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        /* DŮLEŽITÉ: Přidej i tyto styly, aby navigace nebyla jen seznam bodů */
         .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary); text-transform: uppercase; }
         .nav-links { display: flex; gap: 10px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dim); padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; cursor: pointer; }
-        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary); }
-    </style>
-</head>
+        .nav-links a { text-decoration: none; color: var(--text-dim); padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
             text-decoration: none; color: var(--text-dim); padding: 8px 12px; border-radius: 8px;
             font-size: 0.8rem; font-weight: 600; transition: 0.3s; cursor: pointer;
         }
