@@ -6,116 +6,112 @@
     <title>CZ/SK Roleplay | Oficiální Web</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-    /* --- ZÁKLADNÍ NASTAVENÍ BAREV (ZŮSTÁVÁ) --- */
-    :root {
-        --primary: #3b82f6; /* Modrá ze screenshotu */
-        --accent: #60a5fa;
-        --bg: #050810;
-        --card-bg: rgba(15, 23, 42, 0.85); /* Poloprůhledná pro Lunar RP efekt */
-        --text: #f8fafc;
-        --text-dim: #94a3b8;
-    }
+        :root {
+            --primary: #3b82f6;
+            --accent: #60a5fa;
+            --bg: #050810;
+            --card-bg: rgba(15, 23, 42, 0.85);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    
-    body { 
-        background: var(--bg); 
-        color: var(--text); 
-        min-height: 100vh;
-        display: flex; 
-        flex-direction: column;
-        overflow-x: hidden;
-        position: relative; /* Pro video pozadí */
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    /* --- STYLY PRO VIDEO POZADÍ A MODRÉ ZÁŘENÍ --- */
-    #video-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-    }
+        /* --- VIDEO POZADÍ --- */
+        #video-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.25);
+        }
 
-    /* TADY JE PŘIDÁN TO LUNAR RP ZÁŘENÍ NA BODY */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: 
-            radial-gradient(circle at 50% -10%, #1e3a8a, transparent 40%),
-            radial-gradient(circle at 0% 50%, #0f172a, transparent 30%),
-            radial-gradient(circle at 100% 50%, #0f172a, transparent 30%);
-        z-index: -1;
-        opacity: 0.8; /* Jemné záření */
-    }
+        /* --- NAVIGACE & HAMBURGER --- */
+        nav {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+            position: sticky;
+            top: 0;
+        }
 
-    /* --- NAVIGACE --- */
-    nav {
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(15px); /* Jemné rozmazání pozadí za navigací */
-        padding: 1rem 5%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        z-index: 1000;
-        position: sticky;
-        top: 0;
-    }
+        .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
+        
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .menu-toggle span { width: 25px; height: 3px; background: #fff; border-radius: 2px; transition: 0.3s; }
 
-    .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary); letter-spacing: 1px; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 5px; list-style: none; }
-    .nav-links a {
-        text-decoration: none; color: var(--text-dim); padding: 8px 12px; border-radius: 8px;
-        font-size: 0.8rem; font-weight: 600; transition: 0.3s; cursor: pointer;
-    }
-    .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+        .nav-links { display: flex; gap: 5px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-dim); padding: 8px 12px; border-radius: 8px;
+            font-size: 0.8rem; font-weight: 600; transition: 0.3s; cursor: pointer;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
 
-    /* --- OBSAH / KARTY --- */
-    .content-container { flex: 1; padding: 40px 20px; display: flex; justify-content: center; align-items: flex-start; }
-    
-    .page { width: 100%; max-width: 1100px; display: none; animation: fadeIn 0.5s ease; }
-    .page.active { display: block; }
+        /* --- STYLY PRO SEKCE (KARTY, GRIDY, HERO) --- */
+        .content-container { flex: 1; padding: 40px 20px; display: flex; justify-content: center; align-items: flex-start; }
+        .page { width: 100%; max-width: 1100px; display: none; animation: fadeIn 0.5s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
 
-    .content-card {
-        background: var(--card-bg);
-        padding: 40px;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px); /* Rozmazání videa v pozadí pod kartou */
-    }
+        /* Hero sekce (Úvod) */
+        .hero-banner { position: relative; width: 100%; height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero-logo { width: 100%; max-width: 500px; filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.4)); }
+        
+        /* Akční karty (Úvod) */
+        .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 30px; }
+        .action-card { display: flex; align-items: center; padding: 20px; border-radius: 15px; text-decoration: none; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.3s; color: white; text-align: left; }
+        .action-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.06); }
+        .action-icon { width: 45px; height: 45px; background: rgba(0,0,0,0.3); border-radius: 10px; display: flex; justify-content: center; align-items: center; margin-right: 15px; font-size: 1.2rem; }
+        
+        /* Info Grid (Informace) */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 30px; }
+        .info-item { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 15px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .info-item span { font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); font-weight: 600; }
+        .info-item b { color: #fff; }
 
-    h2 { font-size: 2.2rem; margin-bottom: 25px; color: var(--primary); border-bottom: 2px solid rgba(59, 130, 246, 0.2); padding-bottom: 10px; font-weight: 800; text-transform: uppercase;}
-    h3 { margin: 30px 0 15px; color: var(--accent); font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
-    h3::before { content: ""; width: 4px; height: 20px; background: var(--primary); display: inline-block; border-radius: 2px; }
+        h2 { font-size: 2.2rem; margin-bottom: 25px; color: var(--primary); font-weight: 800; text-transform: uppercase; border-bottom: 2px solid rgba(59, 130, 246, 0.2); padding-bottom: 10px; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 20px; }
-    .card { background: rgba(255,255,255,0.03); padding: 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
-    .card span { font-size: 0.75rem; color: var(--text-dim); display: block; margin-bottom: 5px; text-transform: uppercase; }
-    
-    .rule-card { background: rgba(255,255,255,0.02); padding: 15px; border-radius: 10px; margin-bottom: 12px; border-left: 3px solid var(--primary); }
-    .rule-card b { color: var(--accent); display: block; margin-bottom: 4px; }
-    .rule-example { display: block; margin-top: 8px; color: var(--text-dim); font-size: 0.85rem; font-style: italic; background: rgba(0,0,0,0.2); padding: 5px 10px; border-radius: 4px; }
-
-    .staff-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap;}
-    .staff-row span { color: var(--text-dim); }
-    .staff-row b { color: var(--text); }
-    
-    .btn { display: inline-block; background: var(--primary); color: #fff; padding: 14px 30px; border-radius: 10px; text-decoration: none; font-weight: 700; margin-top: 20px; transition: 0.3s; text-align: center; border: none; cursor: pointer;}
-    .btn:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); }
-
-    @media (max-width: 768px) {
-        .nav-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
-        h2 { font-size: 1.6rem; }
-        .staff-row { flex-direction: column; }
-    }
-</style>
+        /* --- RESPONSIVITA (MOBILY) --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+                background: rgba(5, 8, 16, 0.98); backdrop-filter: blur(20px);
+                flex-direction: column; justify-content: center; align-items: center; gap: 20px; transition: 0.4s ease-in-out;
+                border-left: 1px solid rgba(59, 130, 246, 0.2);
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.1rem; width: 80%; text-align: center; }
+            h2 { font-size: 1.5rem; }
+            .content-card { padding: 25px 15px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -126,7 +122,10 @@
 
     <nav>
         <div class="logo">CZ/SK ROLEPLAY</div>
-        <ul class="nav-links">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
             <li><a onclick="showPage('uvod')" id="l-uvod" class="active">Úvod</a></li>
             <li><a onclick="showPage('info')" id="l-info">Informace</a></li>
             <li><a onclick="showPage('staff')" id="l-staff">Admin list</a></li>
