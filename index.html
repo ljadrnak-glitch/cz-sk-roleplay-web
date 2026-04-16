@@ -138,53 +138,241 @@
     </nav>
     <div class="content-container">
         
-      <div id="uvod" class="page active">
-            <div class="content-card">
-                <h2>Vše o našem serveru a roleplay pravidel</h2>
-                <p style="margin-bottom: 20px; color: var(--text-dim); font-style: italic;">
-                    Made by: Vedení Projektu Cz/Sk Roleplay
-                </p>
+     <div id="uvod" class="page active">
+    <div class="content-card" style="padding: 0; overflow: hidden;">
+        <div class="hero-banner">
+            <img src="czskroleplay.webp" alt="Logo" class="hero-logo">
+            <div class="hero-overlay">
+                <h2>Vítejte na CZ/SK Roleplay</h2>
+                <p>Zažijte novou úroveň RP na Emergency Hamburg</p>
+            </div>
+        </div>
 
-
-                <div class="grid">
-                    <div class="card" style="border-left: 4px solid #5865F2;">
+        <div style="padding: 30px;">
+            <div class="action-grid">
+                <a href="https://discord.gg/czskrp" target="_blank" class="action-card discord">
+                    <div class="action-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" width="30">
+                    </div>
+                    <div class="action-text">
                         <span>Oficiální Komunita</span>
-                        <b>Discord:</b> <a href="https://discord.gg/czskrp" style="color:var(--accent); text-decoration:none;" target="_blank">discord.gg/czskrp</a>
+                        <b>discord.gg/czskrp</b>
                     </div>
+                </a>
 
-                    <div class="card" style="border-left: 4px solid #3b82f6;">
+                <div class="action-card game">
+                    <div class="action-icon">🎮</div>
+                    <div class="action-text">
                         <span>Připojení do hry</span>
-                        <b>In-game:</b> <code style="background:#1e3a8a; padding: 2px 5px; border-radius: 4px;">fjnnwbe0</code>
+                        <b>Kód: fjnnwbe0</b>
                     </div>
+                </div>
 
-                    <div class="card" style="border-left: 4px solid #ff0050;">
-                        <span>Sleduj nás</span>
-                        <b>Tiktok:</b> <a href="https://www.tiktok.com/@czsk.eh" style="color:var(--accent); text-decoration:none;" target="_blank">@czsk.eh</a>
+                <a href="https://www.tiktok.com/@czsk.eh" target="_blank" class="action-card tiktok">
+                    <div class="action-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="25">
                     </div>
-                </div>
+                    <div class="action-text">
+                        <span>Sleduj nás</span>
+                        <b>@czsk.eh</b>
+                    </div>
+                </a>
             </div>
-        </div>
-        <div id="info" class="page">
-            <div class="content-card">
-                <h2>📊 Základní informace</h2>
-                <div class="grid">
-                    <div class="card"><span>Vytvoření serveru</span><b>11.7.2025</b></div>
-                    <div class="card"><span>Aktuální počet členů</span><b>1400+</b></div>
-                    <div class="card"><span>Počet otevřených náborů</span><b>20</b></div>
-                    <div class="card"><span>Aktuální sledující na TT</span><b>1400+</b></div>
-                    <div class="card"><span>Aktuální lajky na TT</span><b>5300+</b></div>
-                    <div class="card"><span>Aktuální majitel projektu</span><b>Sebbzy</b></div>
-                    <div class="card"><span>Aktuální spolumajitel projektu</span><b>Vise</b></div>
-                    <div class="card"><span>Projekt vytvořil/založil</span><b>Dejv</b></div>
-                    <div class="card"><span>Bývalý majitel projektu</span><b>Freezyx</b></div>
-                    <div class="card"><span>Členů ve staff týmu</span><b>19</b></div>
-                    <div class="card"><span>Počet mafií na serveru</span><b>2</b></div>
-                </div>
-                <p style="margin-top: 30px; color: var(--accent); font-weight: 800; text-align: center; border: 2px solid var(--primary); padding: 10px; border-radius: 10px;">
-                    První whitelist na Cz/Sk RP scéně
+
+            <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+                <p style="color: var(--text-dim); font-size: 0.85rem; letter-spacing: 0.5px;">
+                    Vedení Projektu <span style="color: var(--primary); font-weight: 700;">CZ/SK ROLEPLAY</span> vás zve do světa nekonečných možností.
                 </p>
             </div>
         </div>
+    </div>
+</div>
+
+<style>
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        background: linear-gradient(to bottom, rgba(5,8,16,0), #0f172a);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-logo {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.4));
+        transition: 0.5s ease;
+    }
+
+    .hero-banner:hover .hero-logo {
+        transform: scale(1.03);
+    }
+
+    .hero-overlay {
+        position: absolute;
+        bottom: 30px;
+        text-align: center;
+    }
+
+    .hero-overlay h2 {
+        border: none;
+        margin-bottom: 5px;
+        font-size: 2.5rem;
+        text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    }
+
+    .hero-overlay p {
+        color: var(--text-dim);
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+
+    .action-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .action-card {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        border-radius: 15px;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: 0.3s;
+    }
+
+    .action-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .action-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(0,0,0,0.3);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        font-size: 1.5rem;
+    }
+
+    .action-text { text-align: left; }
+    .action-text span { display: block; font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; font-weight: 800; }
+    .action-text b { color: #fff; font-size: 1rem; }
+
+    /* Specifické barvy pro karty */
+    .discord { border-left: 4px solid #5865F2; }
+    .discord:hover { box-shadow: 0 10px 20px rgba(88, 101, 242, 0.2); }
+    
+    .game { border-left: 4px solid #3b82f6; }
+    .game:hover { box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2); }
+
+    .tiktok { border-left: 4px solid #ff0050; }
+    .tiktok:hover { box-shadow: 0 10px 20px rgba(255, 0, 80, 0.2); }
+
+    @media (max-width: 768px) {
+        .hero-banner { height: 250px; }
+        .hero-overlay h2 { font-size: 1.5rem; }
+    }
+</style>
+        <div id="info" class="page">
+    <div class="content-card">
+        <h2><span style="font-size: 1.3rem; vertical-align: middle; margin-right: 10px;">📊</span> Základní informace</h2>
+        
+        <div class="info-grid">
+            <div class="info-item"><span>Vytvoření serveru</span><b>11.7.2025</b></div>
+            <div class="info-item accent-grid"><span>Členů komunity</span><b>1400+</b></div>
+            <div class="info-item"><span>Otevřených náborů</span><b>20</b></div>
+            
+            <div class="info-item accent-grid"><span>Sledující (TT)</span><b>1400+</b></div>
+            <div class="info-item"><span>Lajky (TT)</span><b>5300+</b></div>
+            <div class="info-item"><span>Členů ve staffu</span><b>19</b></div>
+
+            <div class="info-item owner-grid"><span>Majitel projektu</span><b>Sebbzy</b></div>
+            <div class="info-item owner-grid"><span>Spolumajitel</span><b>Vise</b></div>
+            <div class="info-item"><span>Počet mafií</span><b>2</b></div>
+            
+            <div class="info-item founder-grid"><span>Projekt založil</span><b>Dejv</b></div>
+            <div class="info-item founder-grid"><span>Bývalý majitel</span><b>Freezyx</b></div>
+        </div>
+
+        <div class="motto-panel">
+            První whitelist na Cz/Sk RP scéně
+        </div>
+    </div>
+</div>
+
+<style>
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 12px;
+        margin-top: 30px;
+        text-align: left; /* Změna z centrovaného na levo */
+    }
+
+    .info-item {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 15px 20px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: space-between; /* Popisek vlevo, hodnota vpravo */
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    .info-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+        transform: translateY(-2px);
+    }
+
+    .info-item span {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .info-item b {
+        font-size: 1rem;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    /* Barevné zvýraznění pro různé typy informací */
+    .accent-grid { border-left: 3px solid var(--primary); }
+    .owner-grid { border-left: 3px solid #f59e0b; } /* Oranžová pro majitele */
+    .founder-grid { border-left: 3px solid var(--text-dim); opacity: 0.7; } /* Zašedlá pro historii */
+
+    .motto-panel {
+        margin-top: 40px;
+        background: rgba(59, 130, 246, 0.05);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        color: var(--primary);
+        padding: 15px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+        .info-grid { grid-template-columns: 1fr; }
+        .info-item { flex-direction: column; text-align: center; gap: 5px; }
+    }
+</style>
 
        <div id="staff" class="page">
     <div class="content-card">
