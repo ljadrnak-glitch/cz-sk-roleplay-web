@@ -38,17 +38,15 @@
         margin-top: 15px;
         font-weight: 500;
     }
-</style>
+    <style>
+        :root {
+           --primary: #3b82f6;
+            --accent: #60a5fa;
+            --bg: #050810;
+            --card-bg: rgba(15, 23, 42, 0.95);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { 
-            background: var(--bg); 
-            color: var(--text); 
-            height: 100vh; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column;
-            background-image: radial-gradient(circle at top right, #1e3a8a, transparent), radial-gradient(circle at bottom left, #1e1b4b, transparent);
         }
 
         /* --- NAVIGACE --- */
@@ -132,7 +130,9 @@
             <li><a onclick="showPage('nabor')" id="l-nabor">Nábor</a></li>
             <li><a onclick="showPage('wl')" id="l-wl">WI-ON</a></li>
             <li><a onclick="showPage('akce')" id="l-akce">Akce</a></li>
+
         </ul>
+
     </nav>
 
     <div id="uvod" class="page active">
