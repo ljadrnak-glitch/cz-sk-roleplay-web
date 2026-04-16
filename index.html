@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CZ/SK Roleplay | Oficiální Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --accent: #60a5fa;
+            --bg: #050810;
+            --card-bg: rgba(15, 23, 42, 0.95);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            height: 100vh; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column;
+            background-image: radial-gradient(circle at top right, #1e3a8a, transparent), radial-gradient(circle at bottom left, #1e1b4b, transparent);
+        }
+
+        /* --- NAVIGACE --- */
+        nav {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+        }
+        .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary); letter-spacing: 1px; }
+        .nav-links { display: flex; gap: 5px; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-dim); padding: 8px 12px; border-radius: 8px;
+            font-size: 0.8rem; font-weight: 600; transition: 0.3s; cursor: pointer;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+
+        /* --- CONTENT --- */
+        .content-container { flex: 1; position: relative; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        
+        .page {
+            position: absolute; width: 95%; max-width: 1100px; height: 85vh; background: var(--card-bg);
+            backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            padding: 40px; overflow-y: auto; display: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .active { display: block !important; animation: fadeInSlide 0.5s ease forwards; }
+
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page::-webkit-scrollbar { width: 6px; }
+        .page::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        h2 { font-size: 1.8rem; margin-bottom: 20px; color: var(--primary); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        h3 { margin: 25px 0 15px; color: var(--accent); font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
+        h3::before { content: ""; width: 4px; height: 20px; background: var(--primary); display: inline-block; border-radius: 2px; }
+
+        /* PRAVIDLA STYLE */
+        .rule-card { 
+            background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; margin-bottom: 10px; 
+            border-left: 3px solid var(--primary); transition: 0.2s;
+        }
+        .rule-card:hover { background: rgba(255,255,255,0.06); }
+        .rule-card b { color: var(--accent); }
+        .rule-example { display: block; margin-top: 5px; color: var(--text-dim); font-size: 0.85rem; font-style: italic; }
+
+        /* GRID & CARDS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+        .card { background: rgba(0,0,0,0.25); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
+        .card span { font-size: 0.75rem; color: var(--text-dim); display: block; }
+
+        .staff-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+        
+        .btn { display: inline-block; background: var(--primary); color: #fff; padding: 12px 25px; border-radius: 10px; text-decoration: none; font-weight: 700; margin-top: 15px; transition: 0.3s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); }
+
+        @media (max-width: 768px) {
+            nav { padding: 10px; }
+            .nav-links { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; text-align: center; }
+            .page { padding: 20px; height: 80vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CZ/SK ROLEPLAY</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('uvod')" id="l-uvod" class="active">Úvod</a></li>
+            <li><a onclick="showPage('info')" id="l-info">Informace</a></li>
+            <li><a onclick="showPage('staff')" id="l-staff">Admin list</a></li>
+            <li><a onclick="showPage('rules')" id="l-rules">RP pravidla</a></li>
+            <li><a onclick="showPage('nabor')" id="l-nabor">Nábor</a></li>
+            <li><a onclick="showPage('wl')" id="l-wl">WI-ON</a></li>
+            <li><a onclick="showPage('akce')" id="l-akce">Akce</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+
+        <div id="uvod" class="page active">
+            <h2>Vše o našem serveru</h2>
+            <div class="card" style="margin-bottom: 15px; border-left: 4px solid #5865F2;">
+                <span>Oficiální Komunita</span>
+                <b>Discord:</b> <a href="https://discord.gg/czskrp" style="color:var(--accent)">https://discord.gg/czskrp</a>
+            </div>
+            <div class="card" style="margin-bottom: 15px; border-left: 4px solid #3b82f6;">
+                <span>Připojení do hry</span>
+                <b>In-game:</b> <code style="background:#1e3a8a; padding: 2px 5px; border-radius: 4px;">fjnnwbe0</code>
+            </div>
+            <div class="card" style="margin-bottom: 15px; border-left: 4px solid #ff0050;">
+                <span>Sleduj nás</span>
+                <b>Tiktok:</b> <a href="https://www.tiktok.com/@czsk.eh" style="color:var(--accent)">@czsk.eh</a>
+            </div>
+            <p style="margin-top: 20px; font-style: italic;">Made by: Vedení Projektu Cz/Sk Roleplay</p>
+        </div>
+
+        <<div id="info" class="page">
+    <h2>📊 Základní informace</h2>
+    <div class="grid">
+        <div class="card"><span>Vytvoření serveru</span><b>11.7.2025</b></div>
+        <div class="card"><span>Aktuální počet členů</span><b>1400+</b></div>
+        <div class="card"><span>Počet otevřených náborů</span><b>20</b></div>
+        <div class="card"><span>Sledující na TikToku</span><b>1400+</b></div>
+        <div class="card"><span>Lajky na TikToku</span><b>5300+</b></div>
+        <div class="card"><span>Aktuální majitel projektu</span><b>Sebbzy</b></div>
+        <div class="card"><span>Aktuální spolumajitel projektu</span><b>Vise</b></div>
+        <div class="card"><span>Projekt vytvořil/založil</span><b>Dejv</b></div>
+        <div class="card"><span>Bývalý majitel projektu</span><b>Freezyx</b></div>
+        <div class="card"><span>Členů ve staff týmu</span><b>19</b></div>
+        <div class="card"><span>Počet mafií na serveru</span><b>2</b></div>
+    </div>
+    <p style="margin-top: 25px; color: var(--accent); font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;">
+        První whitelist na Cz/Sk RP scéně
+    </p>
+</div>
+
+        <div id="staff" class="page">
+    <h2>👥 Staff Tým</h2>
+    
+    <h3>Vedení Projektu</h3>
+    <div class="staff-row"><span>Majitel Projektu:</span><b>xSebbzy (bqst1_) @osolosolsky453</b></div>
+    <div class="staff-row"><span>Spolumajitel Projektu:</span><b>Vise (hvs_dev) @hiv1see</b></div>
+    <div class="staff-row"><span>Zástupce Vlastníků Projektu:</span><b>Kingos (kingos_cz) @dragon_584cz</b></div>
+    <div class="staff-row"><span>Zástupce Vlastníků Projektu:</span><b>Marek Palla (marekpalla) @Marecekpalla</b></div>
+    <div class="staff-row"><span>Zástupce Vlastníků Projektu:</span><b>Felix (lxkfelix) @Felixounek_F</b></div>
+    <div class="staff-row"><span>Provozní Manažer:</span><b>Risa (risa0552) @risanek5000</b></div>
+    <div class="staff-row"><span>Zástupce Provozního Manažera:</span><b>Ejzy (ejzyy) @tezunka_mnau</b></div>
+    <div class="staff-row"><span>Koordinátor Staff Týmu:</span><b>Shelby (shelbos_158) @Nikolasgame765</b></div>
+    <div class="staff-row"><span>Zástupce Koordinátora Staff týmu:</span><b>-</b></div>
+    <div class="staff-row"><span>Komunitní Manažer:</span><b>Lexix (alex.kris.) @Lexikovi</b></div>
+    <div class="staff-row"><span>Zástupce Komunitního Manažera:</span><b>-</b></div>
+    <div class="staff-row"><span>Vedoucí Staff týmu:</span><b>Teffik (teffik_) @Teffik_2601</b></div>
+    <div class="staff-row"><span>Zástupce Vedoucího Staff týmu:</span><b>-</b></div>
+    <div class="staff-row"><span>Staff Supervisor:</span><b>-</b></div>
+
+    <h3 style="margin-top: 40px;">Jiný pozice ve Staffu</h3>
+    <div class="staff-row"><span>Hlavní Admin:</span><b>ppetanekk (ppetanekk) @ppetanekk</b></div>
+    <div class="staff-row"><span>Senior Admin:</span><b>JustMyself (gtq_8) @Vondtaro13</b></div>
+    <div class="staff-row"><span>Pokročilý Admin:</span><b>Dan1k (dani17k_.) @Dan17k_</b></div>
+    <div class="staff-row"><span>Pokročilý Admin:</span><b>vipertrike (viperstrike) @petrzeman880</b></div>
+    <div class="staff-row"><span>Admin:</span><b>Michalik (michalik29) @HafaN2009</b></div>
+    <div class="staff-row"><span>Admin:</span><b>Qerwik (qerwik) @zadnifrendi</b></div>
+    <div class="staff-row"><span>Začáteční Admin:</span><b>TDS (tadeas_hb) @Samuraixdddddddddddd</b></div>
+    <div class="staff-row"><span>Začáteční Admin:</span><b>VolvoGamesCZ (volvogamescz) @VolvoGames_yriderko</b></div>
+</div>
+
+        <div id="rules" class="page">
+    <h2>📜 Kompletní RP Pravidla</h2>
+    <p style="margin-bottom: 20px; font-weight: 600; color: var(--text-dim);">Dodržování těchto pravidel je povinné pro všechny hráče na serveru.</p>
+    
+    <h3>1. RP Základní pojmy</h3>
+    
+    <h4 style="color: var(--primary); margin: 15px 0 10px;">1 - Interakce</h4>
+    <div class="rule-card">
+        <b>1.A - /me</b> 
+        <span>Používej pro nahrazení jakékoliv animace, která ve hře není možná.</span>
+        <span class="rule-example">Příklad: /me dává ruce nahoru, /me kleká na zem</span>
+    </div>
+    <div class="rule-card">
+        <b>1.B - /do</b> 
+        <span>Používej k popisu situace, emocí, reakcí na podmět nebo věcí, které nejsou přímo viditelné nebo proveditelné ve hře. V /do se nesmí lhát.</span>
+        <span class="rule-example">Příklad: /do má otevřenou zlomeninu, /do má u sebe mobil</span>
+    </div>
+    <div class="rule-card">
+        <b>1.C - /try</b> 
+        <span>Příkaz /try se používá, když tvoje postava zkouší něco, co nemá jistý výsledek a je o náhodě.</span>
+        <span class="rule-example">Příklad: /try pokouší se vypnout alarm, /try pokusí se zastavit silné krvácení pomocí hadru</span>
+    </div>
+
+    <h4 style="color: var(--primary); margin: 25px 0 10px;">2 - IC a OOC komunikace</h4>
+    <div class="rule-card">
+        <b>2.A - IC (In Character)</b> 
+        <span>Všechno, co tvoje postava říká, dělá nebo prožívá ve hře. Chováš se tak, jako bys byl postava v reálném světě.</span>
+    </div>
+    <div class="rule-card">
+        <b>2.B - OOC (Out Of Character)</b> 
+        <span>Komunikace mimo hru, reálný svět. Před touto komunikací ve hře napiš vždy /ooc.</span>
+    </div>
+
+    <h3>2. Zakázané chování</h3>
+    <div class="rule-card"><b>Metagaming (MG)</b> Používání informací z OOC prostředí (Discord, stream, chat) v RP. <span class="rule-example">Příklad: Víš z discordu, že někdo krade, tak ho jdeš zatknout.</span></div>
+    <div class="rule-card"><b>PowerGaming (PG)</b> Nadměrné schopnosti, které nejsou reálné. <span class="rule-example">Příklad: Posouvání kamionu postavou.</span></div>
+    <div class="rule-card"><b>RevengeKill (RK)</b> Mstění se po smrti. V RP jsi zapomněl, co se stalo, nesmíš se vracet ani reagovat.</div>
+    <div class="rule-card"><b>RDM & KOS</b> Random Deathmatch / Kill on Sight. Střílení nebo zabíjení hráčů bez důvodu, bez interakce nebo RP důvodu.</div>
+    <div class="rule-card"><b>Vehicle Deathmatch (VDM)</b> Přejíždění hráčů schválně bez důvodu nebo bez RP.</div>
+    <div class="rule-card"><b>Fail RP</b> Nereálné nebo nesmyslné chování. Porušení logiky reálného života. <span class="rule-example">Příklad: Utečeš, když jsi spoutaný u plotu.</span></div>
+    <div class="rule-card"><b>Combat Logging</b> Odpojení se během nebo po akci, abys utekl trestu nebo RP situaci.</div>
+    <div class="rule-card"><b>Combat Comeback</b> Je zakázáno se vracet do RP akce, pokud jste v ní zemřeli.</div>
+    <div class="rule-card"><b>Trolling</b> Nehraješ vážně – troll skiny, přehnané chování, kazení hry ostatním.</div>
+    <div class="rule-card"><b>Mixing</b> Používání OOC výrazů v IC konverzacích. <span class="rule-example">Příklad: "máš lagy", "napiš to do ticketu" přímo do voice chatu.</span></div>
+    <div class="rule-card"><b>Cuff Rush</b> Přijdeš k někomu a náhodně vytáhneš pouta a zatkneš ho, aniž bys věděl, že je hledaný.</div>
+    <div class="rule-card"><b>Cop Baiting</b> Bezdůvodné provokování složek PD. <span class="rule-example">Příklad: Zavoláš na PD, že je tu bomba, ale přitom tam žádná není.</span></div>
+    <div class="rule-card"><b>Asspulling</b> Vytahování nadměrných předmětů jen tak, aniž bys použil příkaz /me. <span class="rule-example">Příklad: Vytahování žebříku z kapsy (správně: /me vytahuje žebřík z auta).</span></div>
+
+    <h3>3. Realističnost RP</h3>
+    <div class="rule-card"><b>Fear RP</b> Postava se musí bát o život v ohrožujících situacích. <span class="rule-example">Příklad: Míří na tebe zbraň – neutečeš, nezavoláš policii, ale spolupracuješ, protože se bojíš.</span></div>
+    <div class="rule-card"><b>Zranění (Injuries)</b> Zranění se nesmí ignorovat. Po zásahu kulkou, nárazu nebo pěstmi musíš hrát bolest a slabost. <span class="rule-example">Příklad: Po čelním nárazu do zdi v autě nemůžeš jen tak vystoupit a utíkat pryč.</span></div>
+    <div class="rule-card"><b>Smrt (PK)</b> Pokud tě zabijí a ležíš, nepamatuješ si nic od té doby, co jsi upadl do bezvědomí. Musíš počkat na lékaře. Pokud lékař není online, respawn je možný pouze pokud to RP situace dovoluje nebo po domluvě s adminem.</div>
+    <div class="rule-card"><b>NVL (Not Valuing Life)</b> Musíš si vážit svého i jiných života. Chovej se tak, jako bys měl v RP jen jeden jediný život.</div>
+    <div class="rule-card"><b>RP Driving</b> Řiď tak, jako bys byl ve skutečném autě. Žádné driftování v 200 km/h ve městě nebo jízda se sportovním vozem v těžkém offroadu.</div>
+</div>
+
+        <div id="nabor" class="page">
+            <h2>📢 Nábor Staff</h2>
+            <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                <b style="color: #f87171;">Stav: Uzavřen</b>
+            </div>
+            <h3>Požadavky:</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>Věk 14 let a více</li>
+                <li>Dvoufázové ověření (Roblox i Discord)</li>
+                <li>Čas na zkoušky a aktivní hraní</li>
+                <li>Aktivita na Discordu</li>
+            </ul>
+            <h3 style="color:#f87171">DŮLEŽITÉ:</h3>
+            <p>Přihláška bude smazána při: Žádání o pomoc, **používání AI** nebo ptání se na výsledky. Hrozí Blacklist!</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqhOaADiYz83RXs0ELbaO-X2pSZh48ecT0rDVt46g2eO9cNg/viewform?usp=dialog" class="btn" target="_blank">Odkaz na formulář</a>
+        </div>
+
+        <div id="wl" class="page">
+            <h2>📝 Whitelist (WI-ON)</h2>
+            <div class="rule-card">💎 Žádné non RP PD</div>
+            <div class="rule-card">💎 Žádné kropky</div>
+            <div class="rule-card">💎 Pouze kvalitní RP Sessions</div>
+            <div class="rule-card">💎 Pohodové RP s různými eventy, trénovanými složkami a více. To vše na jednom místě.</div>
+            <a href="https://discord.gg/czskrp" class="btn" style="background:#5865F2">Vstoupit na WL Discord</a>
+        </div>
+
+        <div id="akce" class="page">
+            <h2>🔥 Velké Akce</h2>
+            <div style="text-align: center; padding: 50px 0;">
+                <p style="font-size: 1.2rem; color: var(--text-dim);">Zatím žádné velké akce.</p>
+                <p>Sledujte tuto sekci, brzy zde budou všechny velké události.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.getElementById('l-' + pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
